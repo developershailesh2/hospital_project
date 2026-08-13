@@ -21,7 +21,7 @@ import { useLoading } from "../../../hooks/useLoading";
 export function UserDashboard() {
   const navigate = useNavigate();
 
-  const [cookies,  removeCookies] = useCookies(["Email", "Token"]);
+  const [cookies, setCookies, removeCookies] = useCookies(["Email", "Token"]);
   const { loading, setLoading } = useLoading();
 
   const [appointments, setAppointments] = useState<Appointment_Contract[]>([]);
