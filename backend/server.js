@@ -10,7 +10,7 @@ dotenv.config();
 //MongoDB connection
 await connectDB();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5050;
 
 //Middleware
 app.use(cors());
@@ -24,6 +24,6 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/sam", appointmentRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server started at : http://127.0.0.1:${PORT}`);
 });
