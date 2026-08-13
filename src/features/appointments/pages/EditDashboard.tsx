@@ -16,7 +16,7 @@ import { editAppointmentSchema } from "../validation/appointmentValidation";
 export function EditDashboard() {
   let params = useParams();
   let navigate = useNavigate();
-  const [cookies, setCookies, removeCookies] = useCookies(["Email"]);
+  const [cookies] = useCookies(["Email"]);
   const [appointment, setAppointment] = useState<Appointment_Contract>({
     _id: "",
     Email: "",
@@ -60,7 +60,7 @@ export function EditDashboard() {
       }
 
       try {
-       const response = await editAppointmentById(params.id, appointment);
+        const response = await editAppointmentById(params.id, appointment);
         await Swal.fire({
           title: "Update Successful",
           text: response.message,
@@ -69,11 +69,12 @@ export function EditDashboard() {
         }).then(() => {
           navigate("/user-dashboard");
         });
-      } catch (error:any) {
+      } catch (error: any) {
         console.log(error);
         Swal.fire({
           title: "Update Failed",
-          text: error.response?.data?.message ||"Unable to update appointment.",
+          text:
+            error.response?.data?.message || "Unable to update appointment.",
           icon: "error",
         });
       }
@@ -238,7 +239,7 @@ export function EditDashboard() {
                         error={
                           formik.touched.Date && Boolean(formik.errors.Date)
                         }
-                        helperText={formik.touched.Date && formik.errors.Date}
+                        // helperText={formik.touched.Date && formik.errors.Date}
                       />
                     </div>
 
