@@ -25,5 +25,5 @@ app.use("/api/users", userRoutes);
 app.use("/api/sam", appointmentRoutes);
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server started at : http://127.0.0.1:${PORT}`);
+  console.log(`Server started or port ${PORT}`);
 });
